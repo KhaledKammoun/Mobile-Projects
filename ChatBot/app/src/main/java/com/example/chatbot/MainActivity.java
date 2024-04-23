@@ -2,11 +2,15 @@ package com.example.chatbot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View ;
 import android.widget.Button ;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
+import android.widget.Toast;
+import android.content.DialogInterface;
 
 import org.w3c.dom.Text;
 
@@ -16,15 +20,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        showWelcome();
 
-        TextView chatbotTitle = findViewById(R.id.chatbotTitle) ;
-        Button statButton = findViewById(R.id.startButton) ;
-        statButton.setOnClickListener(new View.OnClickListener() {
+        Button startButton = findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle chatBot interface routing
+                // Start chatbot activity
+                Log.d("MainActivity", "Start button clicked");
 
+                Intent intent = new Intent(MainActivity.this, ChatbotActivity.class);
+                startActivity(intent);
             }
         });
+    }
+
+    private void showWelcome() {
+        Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
     }
 }
