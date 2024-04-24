@@ -1,0 +1,13 @@
+<!-- Layout for chatbot messages -->
+<!-- Customize as needed -->
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messageTextViewBot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/message_background_bot"
+    android:padding="8dp"
+    android:textColor="#FFFFFF"
+    android:layout_gravity="end"
+
+    android:textSize="16sp" />
