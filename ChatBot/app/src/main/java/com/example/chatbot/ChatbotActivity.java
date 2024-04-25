@@ -28,8 +28,14 @@ public class ChatbotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_inteface);
 
+        // verif current node is the root node or a child node
+        if (!Response.getCallRootNode()) {
+            Response.createGraph() ;
+        }
 
-        rootQuestion = Response.createGraph();
+        // get current node, placed in Response class
+        // store currentNode as static in Class Response:: to avoid losing CurrentNode variable when pass from page to page
+        rootQuestion =Response.getCurrentNode() ;
 
         // get next questions
         for (Response nextQuestion : rootQuestion.getNextQuestions()) {
@@ -84,7 +90,7 @@ public class ChatbotActivity extends AppCompatActivity {
                     for (Object obj : receivedList) {
                         messageList.add((Message) obj);
                     }
-                    messageAdapter.notifyDataSetChanged(); // Notify adapter of data change
+                    messageAdapter.notifyDataSetChanged();
                 }
             }
         }
@@ -101,21 +107,20 @@ public class ChatbotActivity extends AppCompatActivity {
         int selectedQuestion = getIntent().getIntExtra("selectedQuestion", -1);
 
         // Check if the selected question index is valid
+// Check if the selected question index is valid
         if (selectedQuestion >= 0 && selectedQuestion < questionStrings.size()) {
 
-            // Add messages to the interface
-            addMessage(questionStrings.get(selectedQuestion), true);
-            addMessage(responseStrings.get(selectedQuestion), false);
-            /*for (Response response : nextQuestionsList) {
+
+            for (Response response : nextQuestionsList) {
                 if (response.getQuestion().equals(questionStrings.get(selectedQuestion))) {
                     updateRootQuestion(response);
+                    // Add messages to the interface
+                    addMessage(response.getQuestion(), true);
+                    addMessage(response.getResponse(), false);
                     break;
-
                 }
-
-            }*/
+            }
         }
-
         Button returnButton = findViewById(R.id.returnButton) ;
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +139,7 @@ public class ChatbotActivity extends AppCompatActivity {
     }
 
     private void updateRootQuestion(Response newRoot) {
+        Response.setCurrentNode(newRoot);
         this.rootQuestion = newRoot;
     }
 

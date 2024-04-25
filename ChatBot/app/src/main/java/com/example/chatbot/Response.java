@@ -7,11 +7,27 @@ public class Response {
     private String currentQuestion;
     private String currentResponse;
     private List<Response> nextQuestions;
+    private static boolean callRootNode ;
+    private static Response currentQuestionNode ;
 
+    public static Response getCurrentNode() {
+        return Response.currentQuestionNode ;
+    }
+
+    public static void setCurrentNode(Response node) {
+        Response.currentQuestionNode = node ;
+    }
     public Response(String question, String response) {
         this.currentQuestion = question;
         this.currentResponse = response;
         this.nextQuestions = new ArrayList<>();
+        if (!Response.callRootNode) {
+            Response.callRootNode = true ;
+        }
+    }
+
+    public static boolean getCallRootNode () {
+        return Response.callRootNode ;
     }
 
     public String getQuestion() {
@@ -37,16 +53,16 @@ public class Response {
         root.addNextQuestion(languageQuestion);
 
         Response capitalQuestion = new Response("Quelle est la capitale des États-Unis ?", "La capitale des États-Unis est Washington D.C.");
-        root.addNextQuestion(capitalQuestion);
+        languageQuestion.addNextQuestion(capitalQuestion);
 
         Response continentQuestion = new Response("Quel est le plus grand continent du monde ?", "Le plus grand continent du monde est l'Asie.");
-        root.addNextQuestion(continentQuestion);
+        capitalQuestion.addNextQuestion(continentQuestion);
 
         Response populationQuestion = new Response("Quel est le pays le plus peuplé au monde ?", "Le pays le plus peuplé au monde est la Chine.");
-        root.addNextQuestion(populationQuestion);
+        capitalQuestion.addNextQuestion(populationQuestion);
 
         Response mountainQuestion = new Response("Quel est le plus haut sommet du monde ?", "Le plus haut sommet du monde est l'Everest.");
-        root.addNextQuestion(mountainQuestion);
+        languageQuestion.addNextQuestion(mountainQuestion);
 
         Response riverQuestion = new Response("Quel est le fleuve le plus long d'Europe ?", "Le fleuve le plus long d'Europe est la Volga.");
         root.addNextQuestion(riverQuestion);
@@ -81,6 +97,7 @@ public class Response {
         Response animalQuestion2 = new Response("Quel est le plus grand animal terrestre ?", "Le plus grand animal terrestre est l'éléphant.");
         root.addNextQuestion(animalQuestion2);
 
+        setCurrentNode(root) ;
         return root;
     }
 
