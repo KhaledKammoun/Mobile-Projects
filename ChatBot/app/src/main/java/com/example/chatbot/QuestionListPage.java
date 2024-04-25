@@ -18,6 +18,7 @@ import android.content.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 import org.w3c.dom.Text;
 
@@ -29,19 +30,27 @@ public class QuestionListPage extends AppCompatActivity {
 
         setContentView(R.layout.question_list_style);
         ArrayList<String> nextQuestions = getIntent().getStringArrayListExtra("nextQuestions");
-        ListView questionsListView = findViewById(R.id.questionsListView);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nextQuestions);
-        questionsListView.setAdapter(adapter);
 
-        // Set a click listener for the items in the ListView (optional)
+
+
+
+
+        ListView questionsListView = findViewById(R.id.questionsListView);
+        questionsListView.setAdapter(adapter);
         questionsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedQuestion = nextQuestions.get(position);
-                // Handle the selected question as needed
+                Intent intent = new Intent(QuestionListPage.this, ChatbotActivity.class);
+
+                Bundle bundle = getIntent().getExtras();
+                intent.putExtras(bundle);
+
+                intent.putExtra("selectedQuestion", position);
+                startActivity(intent);
+
             }
         });
-
-        Toast.makeText(QuestionListPage.this, "Welcome!", Toast.LENGTH_SHORT).show();
     }
 }

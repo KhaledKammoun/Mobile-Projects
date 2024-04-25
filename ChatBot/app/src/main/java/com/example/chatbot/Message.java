@@ -1,6 +1,8 @@
 package com.example.chatbot;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private  String text ;
     private boolean sendByUser ;
     public Message(String text, boolean sendByUser) {

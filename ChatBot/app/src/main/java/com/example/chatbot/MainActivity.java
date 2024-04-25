@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start chatbot activity
-                Log.d("MainActivity", "Start button clicked");
-
                 Intent intent = new Intent(MainActivity.this, ChatbotActivity.class);
                 startActivity(intent);
             }
@@ -36,6 +33,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showWelcome() {
-        Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Bienvenue!", Toast.LENGTH_SHORT).show();
     }
 }

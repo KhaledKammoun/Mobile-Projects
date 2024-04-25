@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/background_gradient"
     android:gravity="center">
 
     <!-- Chatbot Title -->
@@ -19,9 +19,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="47dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="187dp"
+        android:layout_marginEnd="61dp"
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center"
         android:text="Chatbot"
@@ -30,19 +30,19 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="270dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chatbotTitle"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="203dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="205dp"
+        android:background="@drawable/button_background"
+        android:elevation="4dp"
         android:onClick="sendMessage"
-        android:text="Posez-moi une question"
-        android:textSize="20sp" />
+        android:padding="12dp"
+        android:text="Posez-moi des questions"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/versionLabel"

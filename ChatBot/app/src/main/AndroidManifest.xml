@@ -24,6 +24,9 @@
         <activity android:name=".ChatbotActivity">
             <!-- Add any necessary configurations for ChatbotActivity here -->
         </activity>
+        <activity android:name=".QuestionListPage">
+            <!-- Add any necessary configurations for ChatbotActivity here -->
+        </activity>
     </application>
 
 </manifest>
