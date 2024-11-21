@@ -54,10 +54,10 @@ public class Response {
         Response languageQuestion = new Response("Quelle est la langue la plus parlée en France ?", "La langue la plus parlée en France est le français.");
         root.addNextQuestion(languageQuestion);
 
-        Response capitalQuestion = new Response("Quelle est la capitale des États-Unis ?", "La capitale des États-Unis est Washington D.C.");
+        Response capitalQuestion = new Response("Quels sont les monuments célèbres de Paris ?", "Certains des monuments célèbres de Paris sont la Tour Eiffel et le Louvre.");
         languageQuestion.addNextQuestion(capitalQuestion);
 
-        Response continentQuestion = new Response("Quel est le plus grand continent du monde ?", "Le plus grand continent du monde est l'Asie.");
+        Response continentQuestion = new Response("Quelle est la population de Paris ?", "La population de Paris est d'environ 2.2 millions d'habitants.");
         capitalQuestion.addNextQuestion(continentQuestion);
 
         Response populationQuestion = new Response("Quel est le pays le plus peuplé au monde ?", "Le pays le plus peuplé au monde est la Chine.");
@@ -65,7 +65,7 @@ public class Response {
 
         // Géographie et nature
         Response oceanQuestion = new Response("Quel est le plus grand océan du monde ?", "Le plus grand océan du monde est l'océan Pacifique.");
-        root.addNextQuestion(oceanQuestion);
+        root.addNextQuestion(capitalQuestion);
 
         Response mountainQuestion = new Response("Quel est le plus haut sommet du monde ?", "Le plus haut sommet du monde est l'Everest.");
         root.addNextQuestion(mountainQuestion);
